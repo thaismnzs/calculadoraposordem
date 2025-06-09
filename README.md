@@ -1,13 +1,14 @@
 Aplicação Web: Calculadora Pós-Ordem em Spring Boot
-📌 Descrição:
+
 Desenvolvimento de uma calculadora em notação pós-ordem (RPN - Reverse Polish Notation) utilizando Java com Spring Boot, onde as expressões são avaliadas com o auxílio de estruturas de dados (pilha).
 
 ✨ Funcionalidades:
-✔️ Cálculos em pós-ordem (ex: 3 4 * = 12)
-✔️ Operações básicas: +, -, *, /, % (resto da divisão)
-✔️ Validação de entrada: tratamento de erros como divisão por zero e operandos insuficientes
-✔️ Frontend intuitivo: interface web responsiva com HTML, CSS e JavaScript
-✔️ Backend robusto: API RESTful com Spring Boot e manipulação de pilha (Stack)
+
+- Cálculos em pós-ordem (ex: 3 4 * = 12)
+- Operações básicas: +, -, *, /, % (resto da divisão)
+- Validação de entrada: tratamento de erros como divisão por zero e operandos insuficientes
+- Frontend intuitivo: interface web responsiva com HTML, CSS e JavaScript
+- Backend robusto: API RESTful com Spring Boot e manipulação de pilha (Stack)
 
 🛠️ Tecnologias Utilizadas:
 
