@@ -3,137 +3,169 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+MX+Guides&family=Readex+Pro:wght@160..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <title>Calculadora Pós-Ordem</title>
+
     <style>
+
         body {
-            font-family: Arial, sans-serif;
-            background: #222;
+            font-family: "Roboto", monospace;
+            background: #dac2b5;
             color: #eee;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h2 {
+            color: #755c4f;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+
         .calculadora {
-            background: #333;
+            box-shadow: 2px 2px 2px px rgba(0, 0, 0, 0.2);
+            background: #d3af9b;
             padding: 20px;
             border-radius: 8px;
             width: 320px;
         }
+
         #display {
+            font-family: "Roboto", monospace;
             width: 100%;
             height: 40px;
-            font-size: 18px;
+            font-size: 14px;
+            text-align: center;
             margin-bottom: 10px;
-            padding: 5px 10px;
-            border-radius: 4px;
+            padding: 5px 5px;
+            border-radius: 40px;
             border: none;
-            background: #111;
-            color: #eee;
+            background: #a5806c;
+            color: #3a2920;
         }
         .botoes {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
+
         }
         button {
+            font-family: "Roboto", monospace;
+            font-weight: 700;
             font-size: 18px;
             padding: 15px 0;
-            background: #555;
+            background: #755c4f;
             border: none;
-            border-radius: 4px;
+            border-radius: 80px;
+            box-shadow: 2px 2px 2px 1px rgba(204, 160, 160, 0.5);
             color: #eee;
             cursor: pointer;
             transition: background 0.3s;
         }
         button:hover {
-            background: #777;
+            background: #c46767;
         }
         button.limpar {
             grid-column: span 2;
-            background: #a33;
+            background: rgb(194, 6, 6);
         }
         button.igual {
             grid-column: span 2;
-            background: #3a3;
+            background: rgb(22, 107, 22);
         }
     </style>
 </head>
 <body>
+<div class="container">
+    <h2>Calculadora Pós-Ordem</h2>
+    <div class="calculadora">
+        <input type="text" id="display" disabled placeholder="Digite a expressão (num num operador):"/>
+        <div class="botoes">
+            <button class="limpar" onclick="limpar()">C</button>
+            <button class="igual" onclick="calcular()">=</button>
 
-<div class="calculadora">
-    <input type="text" id="display" disabled placeholder="Digite a expressão pós-ordem"/>
-    <div class="botoes">
-        <button class="limpar" onclick="limpar()">C</button>
-        <button class="igual" onclick="calcular()">=</button>
+            <button onclick="adicionar(' ')">Espaço</button>
+            <button onclick="adicionar('+')">+</button>
+            <button onclick="adicionar('-')">-</button>
+            <button onclick="adicionar('*')">*</button>
+            <button onclick="adicionar('/')">/</button>
+            <button onclick="adicionar('%')">%</button>
 
-        <button onclick="adicionar(' ')">Espaço</button>
-        <button onclick="adicionar('+')">+</button>
-        <button onclick="adicionar('-')">-</button>
-        <button onclick="adicionar('*')">*</button>
-        <button onclick="adicionar('/')">/</button>
-        <button onclick="adicionar('%')">%</button>
-
-        <button onclick="adicionar('1')">1</button>
-        <button onclick="adicionar('2')">2</button>
-        <button onclick="adicionar('3')">3</button>
-        <button onclick="adicionar('4')">4</button>
-        <button onclick="adicionar('5')">5</button>
-        <button onclick="adicionar('6')">6</button>
-        <button onclick="adicionar('7')">7</button>
-        <button onclick="adicionar('8')">8</button>
-        <button onclick="adicionar('9')">9</button>
-        <button onclick="adicionar('0')">0</button>
-        <button onclick="adicionar('.')">.</button>
+            <button onclick="adicionar('1')">1</button>
+            <button onclick="adicionar('2')">2</button>
+            <button onclick="adicionar('3')">3</button>
+            <button onclick="adicionar('4')">4</button>
+            <button onclick="adicionar('5')">5</button>
+            <button onclick="adicionar('6')">6</button>
+            <button onclick="adicionar('7')">7</button>
+            <button onclick="adicionar('8')">8</button>
+            <button onclick="adicionar('9')">9</button>
+            <button onclick="adicionar('0')">0</button>
+            <button onclick="adicionar('.')">.</button>
+        </div>
     </div>
-</div>
 
-<script>
-    let expressao = "";
+    <script>
+        let expressao = "";
 
-    function atualizarDisplay() {
-        document.getElementById("display").value = expressao.trim();
-    }
-
-    function adicionar(valor) {
-        // Evita múltiplos espaços seguidos
-        if (valor === ' ' && expressao.endsWith(' ')) return;
-        expressao += valor;
-        atualizarDisplay();
-    }
-
-    function limpar() {
-        expressao = "";
-        atualizarDisplay();
-    }
-
-    function calcular() {
-        if (!expressao.trim()) {
-            alert("Digite a expressão em pós-ordem separando os termos por espaço.");
-            return;
+        function atualizarDisplay() {
+            document.getElementById("display").value = expressao.trim();
         }
 
-        fetch("http://localhost:8080/api/calculadora/calcular", { // ← URL completa
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ expressao: expressao.trim() })
-        })
-            .then(resp => {
-                if (!resp.ok) throw new Error("Erro no cálculo.");
-                return resp.text();
+        function adicionar(valor) {
+            if (valor === ' ' && expressao.endsWith(' ')) return;
+            expressao += valor;
+            atualizarDisplay();
+        }
+
+        function limpar() {
+            expressao = "";
+            atualizarDisplay();
+        }
+
+        function calcular() {
+            if (!expressao.trim()) {
+                alert("Digite a expressão em pós-ordem, separando os termos por espaço.");
+                return;
+            }
+
+            fetch("/api/calculadora/calcular", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ expressao: expressao.trim() })
             })
-            .then(resultado => {
-                expressao = resultado;
-                atualizarDisplay();
-            })
-            .catch(err => {
-                alert(err.message);
-                console.error(err);
-            });
-    }
-</script>
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(err => { throw new Error(err); });
+                    }
+                    return response.text();
+                })
+                .then(resultado => {
+                    expressao = resultado;
+                    atualizarDisplay();
+                })
+                .catch(err => {
+                    alert(err.message);
+                    console.error(err);
+                });
+        }
+    </script>
 
 </body>
 </html>
