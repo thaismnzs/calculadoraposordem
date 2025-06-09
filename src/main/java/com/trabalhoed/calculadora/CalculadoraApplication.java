@@ -1,10 +1,8 @@
 package com.trabalhoed.calculadora;
-import controller.CalculadoraController;
-import service.CalculadoraPosOrdem;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApplication(scanBasePackages = {"com.trabalhoed.calculadora", "controller"})
 
-@SpringBootApplication
 public class CalculadoraApplication {
 
 	public static void main(String[] args) {
