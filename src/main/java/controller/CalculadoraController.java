@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class CalculadoraController {
 
+    public CalculadoraController() {
+        System.out.println("CalculadoraController inicializado!");
+    }
+
     @PostMapping("/calcular")
     public ResponseEntity<String> calcular(@RequestBody Map<String, String> request) {
         String expressao = request.get("expressao");
