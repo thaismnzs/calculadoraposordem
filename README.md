@@ -4,19 +4,19 @@ Desenvolvimento de uma calculadora em notação pós-ordem (RPN - Reverse Polish
 
 ✨ Funcionalidades:
 
-- Cálculos em pós-ordem (ex: 3 4 * = 12)
-- Operações básicas: +, -, *, /, % (resto da divisão)
-- Validação de entrada: tratamento de erros como divisão por zero e operandos insuficientes
-- Frontend intuitivo: interface web responsiva com HTML, CSS e JavaScript
-- Backend robusto: API RESTful com Spring Boot e manipulação de pilha (Stack)
+- Cálculos em pós-ordem (ex: 3 4 * = 12).
+- Operações básicas: +, -, *, /, % (resto da divisão).
+- Validação de entrada: tratamento de erros como divisão por zero e operandos insuficientes.
+- Frontend intuitivo: interface web responsiva com HTML, CSS e JavaScript.
+- Backend robusto: API RESTful com Spring Boot e manipulação de pilha (Stack).
 
 🛠️ Tecnologias Utilizadas:
 
-- Backend: Java 17, Spring Boot 3, Maven
+- Backend: Java 17, Spring Boot 3, Maven.
 
-- Frontend: HTML5, CSS3, JavaScript (Vanilla JS)
+- Frontend: HTML5, CSS3, JavaScript (Vanilla JS).
 
-- Controle de Versão: Git & GitHub
+- Controle de Versão: Git & GitHub.
 
 🔧 Como Funciona?
 
